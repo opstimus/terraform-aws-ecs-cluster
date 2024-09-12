@@ -46,7 +46,7 @@ This example shows how to use the ECS cluster module to create an ECS cluster wi
 
 ```hcl
 module "ecs_cluster" {
-  source = "path_to_your_module"
+  source = "github.com/opstimus/terraform-aws-ecs-cluster?ref=v<RELEASE>"
 
   project            = "my-project"
   environment        = "dev"
