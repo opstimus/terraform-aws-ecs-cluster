@@ -72,22 +72,30 @@ resource "aws_security_group" "main" {
   description = "${var.project}-${var.environment}-ecs-cluster"
   vpc_id      = var.vpc_id
 
-  ingress {
-    from_port   = 0
-    to_port     = 65535
-    protocol    = "tcp"
-    cidr_blocks = [var.vpc_cidr]
-  }
-
-  egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
   tags = {
     Name = "${var.project}-${var.environment}-ecs-cluster"
   }
+}
+
+resource "aws_vpc_security_group_ingress_rule" "ingress_vpc" {
+  security_group_id = aws_security_group.main.id
+
+  ip_protocol = "tcp"
+  from_port   = 0
+  to_port     = 65535
+  cidr_ipv4   = var.vpc_cidr
+}
+
+resource "aws_vpc_security_group_egress_rule" "ipv4" {
+  security_group_id = aws_security_group.main.id
+
+  ip_protocol = "-1"
+  cidr_ipv4   = "0.0.0.0/0"
+}
+
+resource "aws_vpc_security_group_egress_rule" "ipv6" {
+  security_group_id = aws_security_group.main.id
+
+  ip_protocol = "-1"
+  cidr_ipv6   = "::/0"
 }
