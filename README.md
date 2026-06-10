@@ -23,9 +23,9 @@ This Terraform module sets up an ECS cluster with necessary IAM roles, security 
 |----------------------------|----------------------------------------------|--------------|---------|:--------:|
 | project                    | Project name                                 | string       | -       |   yes    |
 | environment                | Environment name                             | string       | -       |   yes    |
+| name                       | Optional name suffix appended to resource names | string    | `""`    |    no    |
 | vpc_id                     | The ID of the VPC                            | string       | -       |   yes    |
 | vpc_cidr                   | The CIDR block of the VPC                    | string       | -       |   yes    |
-| name                       | Optional name suffix appended to resource names | string    | `""`    |    no    |
 | container_insights         | Enable container insights for the cluster    | bool         | false   |    no    |
 | tags                       | tags                                         | `map(string)` | -      |    no    |
 
