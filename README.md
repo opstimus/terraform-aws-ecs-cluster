@@ -1,3 +1,12 @@
+> ⚠️ **Moved to the monorepo.**
+> This module now lives in [`opstimus/terraform-modules`](https://github.com/opstimus/terraform-modules) at `modules/aws-ecs-cluster`.
+>
+> ```hcl
+> source = "git::https://github.com/opstimus/terraform-modules.git//modules/aws-ecs-cluster?ref=aws-ecs-cluster/v2.1.0"
+> ```
+>
+> This repository remains for existing consumers; new development happens in the monorepo.
+
 # ECS Cluster Module
 
 ## Description
